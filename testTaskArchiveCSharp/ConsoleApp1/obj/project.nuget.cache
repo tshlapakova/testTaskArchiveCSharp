@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "luDTXj2YD/coco1CTBTO1x8Vfyp5sy61k6P0DYa8WHIH72mZavLW5yKjOX+ykD42iLpjLVl6lryt5185KA7W0Q==",
+  "dgSpecHash": "vP7qdrXmW02lDujynEABHukIXk7IzMAGuRF5tW916amRTNPnE9wFJu8XM0SHm4bJ4RfYpII9jkq8numAL8WtNQ==",
   "success": true,
-  "projectFilePath": "D:\\pers\\testTaskArchiveCSharp\\testTaskArchiveCSharp\\ConsoleApp1\\ConsoleApp1.csproj",
+  "projectFilePath": "D:\\pers\\testTaskArchiveCSharp\\testTaskArchiveCSharp\\ConsoleApp1\\DataCollecting.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tatsiana.shlapakova\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512",
     "C:\\Users\\tatsiana.shlapakova\\.nuget\\packages\\htmlagilitypack\\1.11.46\\htmlagilitypack.1.11.46.nupkg.sha512",

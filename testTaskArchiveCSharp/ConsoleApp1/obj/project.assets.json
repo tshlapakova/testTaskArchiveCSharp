@@ -173,9 +173,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\pers\\testTaskArchiveCSharp\\testTaskArchiveCSharp\\ConsoleApp1\\ConsoleApp1.csproj",
-      "projectName": "ConsoleApp1",
-      "projectPath": "D:\\pers\\testTaskArchiveCSharp\\testTaskArchiveCSharp\\ConsoleApp1\\ConsoleApp1.csproj",
+      "projectUniqueName": "D:\\pers\\testTaskArchiveCSharp\\testTaskArchiveCSharp\\ConsoleApp1\\DataCollecting.csproj",
+      "projectName": "DataCollecting",
+      "projectPath": "D:\\pers\\testTaskArchiveCSharp\\testTaskArchiveCSharp\\ConsoleApp1\\DataCollecting.csproj",
       "packagesPath": "C:\\Users\\tatsiana.shlapakova\\.nuget\\packages\\",
       "outputPath": "D:\\pers\\testTaskArchiveCSharp\\testTaskArchiveCSharp\\ConsoleApp1\\obj\\",
       "projectStyle": "PackageReference",
