@@ -1,9 +1,8 @@
-﻿using System;
-using HtmlAgilityPack;
+﻿using HtmlAgilityPack;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using CsvHelper;
-using System.Globalization;
 
 namespace DataCollecting
 {
@@ -11,8 +10,6 @@ namespace DataCollecting
     {
         public static void Main()
         {
-            //TODO: Go through each page and collect data to JSON instead of CSV
-
             // the URL of the target page
             string url = "https://scrapeme.live/shop/";
 
@@ -21,25 +18,23 @@ namespace DataCollecting
             var document = web.Load(url);
             var nodes = document.DocumentNode.SelectNodes("//*[@id='main']/ul/li[position()>0 and position()<17]");
             var counter = 0;
-            var pages = 48;
+            var pages = Convert.ToInt32(document.DocumentNode.SelectSingleNode("//*[@id='main']/div[1]/nav/ul/li[8]/a").InnerText);
             // initializing the list of objects that will store the scraped data
             List<Episode> episodes = new List<Episode>();
 
 
-            for (int page = 0; page < pages; page++)
+            for (int pageNumber = 0; pageNumber < pages; pageNumber++)
             {
-                if (page == 0)
-                {
-                    url = "https://scrapeme.live/shop/";
-                }
-                else
-                {
-                    url = "https://scrapeme.live/shop/page/" + page + "/";
-                }
+                url = pageNumber == 0 ? "https://scrapeme.live/shop/" : "https://scrapeme.live/shop/page/" + pageNumber + "/";
 
                 // looping over the nodes and extract data from them
                 foreach (var node in nodes)
                 {
+                    //TODO: Prevent writing array if duplicates
+                    var nameTemp = HtmlEntity.DeEntitize(node.SelectSingleNode("a[1]/h2").InnerText);
+                    var priceTemp = HtmlEntity.DeEntitize(node.SelectSingleNode("a[1]/span/span").InnerText);
+                    var skuTemp = HtmlEntity.DeEntitize(node.SelectSingleNode("a[2]").GetAttributeValue("data-product_sku", ""));
+                    var imageTemp = HtmlEntity.DeEntitize(node.SelectSingleNode("a[1]/img").GetAttributeValue("src", ""));
                     // add a new Episode instance to the list of scraped data
                     episodes.Add(new Episode()
                     {
@@ -52,12 +47,12 @@ namespace DataCollecting
                 }
             }
 
-            // initializing the CSV file
-            using (var writer = new StreamWriter("output.csv"))
-            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            //write data into json
+            using (StreamWriter file = File.CreateText("result.json"))
             {
-                // populating the CSV file
-                csv.WriteRecords(episodes);
+                JsonSerializer serializer = new JsonSerializer();
+                //serialize object directly into file stream
+                serializer.Serialize(file, episodes);
             }
         }
     }
