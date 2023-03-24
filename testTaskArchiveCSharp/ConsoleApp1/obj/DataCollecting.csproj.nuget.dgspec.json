@@ -39,10 +39,6 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
-            "CsvHelper": {
-              "target": "Package",
-              "version": "[30.0.1, )"
-            },
             "HtmlAgilityPack": {
               "target": "Package",
               "version": "[1.11.46, )"
