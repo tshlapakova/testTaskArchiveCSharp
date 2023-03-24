@@ -22,7 +22,6 @@ namespace DataCollecting
             // initializing the list of objects that will store the scraped data
             List<Episode> episodes = new List<Episode>();
 
-
             for (int pageNumber = 0; pageNumber < pages; pageNumber++)
             {
                 url = pageNumber == 0 ? "https://scrapeme.live/shop/" : "https://scrapeme.live/shop/page/" + pageNumber + "/";
@@ -30,11 +29,8 @@ namespace DataCollecting
                 // looping over the nodes and extract data from them
                 foreach (var node in nodes)
                 {
-                    //TODO: Prevent writing array if duplicates
-                    var nameTemp = HtmlEntity.DeEntitize(node.SelectSingleNode("a[1]/h2").InnerText);
-                    var priceTemp = HtmlEntity.DeEntitize(node.SelectSingleNode("a[1]/span/span").InnerText);
-                    var skuTemp = HtmlEntity.DeEntitize(node.SelectSingleNode("a[2]").GetAttributeValue("data-product_sku", ""));
-                    var imageTemp = HtmlEntity.DeEntitize(node.SelectSingleNode("a[1]/img").GetAttributeValue("src", ""));
+                    //TODO: Prevent recording array if duplicates
+
                     // add a new Episode instance to the list of scraped data
                     episodes.Add(new Episode()
                     {
