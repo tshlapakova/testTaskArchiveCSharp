@@ -5,7 +5,7 @@ using System.IO;
 using CsvHelper;
 using System.Globalization;
 
-namespace ConsoleApp1
+namespace DataCollecting
 {
     public class Program
     {
@@ -19,9 +19,8 @@ namespace ConsoleApp1
             var web = new HtmlWeb();
             // downloading to the target page and parsing its HTML content
             var document = web.Load(url);
-
-            var nodes = document.DocumentNode.SelectNodes("@//*[@id='main']/ul/li[position()>0 and position()<17]");
-
+            var nodes = document.DocumentNode.SelectNodes("//*[@id='main']/ul/li[position()>0 and position()<17]");
+            var counter = 0;
             // initializing the list of objects that will store the scraped data
             List<Episode> episodes = new List<Episode>();
             // looping over the nodes and extract data from them
@@ -32,11 +31,11 @@ namespace ConsoleApp1
                     // add a new Episode instance to the list of scraped data
                     episodes.Add(new Episode()
                     {
-                        Id = node.Attributes.Count,
-                        Name = HtmlEntity.DeEntitize(node.SelectSingleNode("/a[1]/h2").InnerText.ToString()),
+                        Id = counter++,
+                        Name = HtmlEntity.DeEntitize(node.SelectSingleNode("a[1]/h2").InnerText.ToString()),
                         Price = HtmlEntity.DeEntitize(node.SelectSingleNode("a[1]/span/span/span").ToString()),
-                        Sku = HtmlEntity.DeEntitize(node.SelectSingleNode("/a[2]").GetAttributeValue("data-product_sku", "").ToString()),
-                        Image_url = HtmlEntity.DeEntitize(node.SelectSingleNode("/img").GetAttributeValue("src", ""))
+                        Sku = HtmlEntity.DeEntitize(node.SelectSingleNode("a[2]").GetAttributeValue("data-product_sku", "").ToString()),
+                        Image_url = HtmlEntity.DeEntitize(node.SelectSingleNode("img").GetAttributeValue("src", ""))
                     });
                 }
             }
