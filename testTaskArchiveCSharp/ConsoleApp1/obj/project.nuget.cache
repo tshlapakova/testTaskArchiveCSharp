@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "luDTXj2YD/coco1CTBTO1x8Vfyp5sy61k6P0DYa8WHIH72mZavLW5yKjOX+ykD42iLpjLVl6lryt5185KA7W0Q==",
+  "success": true,
+  "projectFilePath": "D:\\pers\\testTaskArchiveCSharp\\testTaskArchiveCSharp\\ConsoleApp1\\ConsoleApp1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\tatsiana.shlapakova\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512",
+    "C:\\Users\\tatsiana.shlapakova\\.nuget\\packages\\htmlagilitypack\\1.11.46\\htmlagilitypack.1.11.46.nupkg.sha512",
+    "C:\\Users\\tatsiana.shlapakova\\.nuget\\packages\\jsonhelper\\1.0.0\\jsonhelper.1.0.0.nupkg.sha512",
+    "C:\\Users\\tatsiana.shlapakova\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
