@@ -21,12 +21,24 @@ namespace DataCollecting
             var document = web.Load(url);
             var nodes = document.DocumentNode.SelectNodes("//*[@id='main']/ul/li[position()>0 and position()<17]");
             var counter = 0;
+            var pages = 48;
             // initializing the list of objects that will store the scraped data
             List<Episode> episodes = new List<Episode>();
-            // looping over the nodes and extract data from them
-            foreach (var node in nodes)
+
+
+            for (int page = 0; page < pages; page++)
             {
-                if(node != null)
+                if (page == 0)
+                {
+                    url = "https://scrapeme.live/shop/";
+                }
+                else
+                {
+                    url = "https://scrapeme.live/shop/page/" + page + "/";
+                }
+
+                // looping over the nodes and extract data from them
+                foreach (var node in nodes)
                 {
                     // add a new Episode instance to the list of scraped data
                     episodes.Add(new Episode()
@@ -47,7 +59,6 @@ namespace DataCollecting
                 // populating the CSV file
                 csv.WriteRecords(episodes);
             }
-
         }
     }
 }
