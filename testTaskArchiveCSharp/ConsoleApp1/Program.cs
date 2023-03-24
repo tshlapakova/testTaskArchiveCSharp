@@ -31,11 +31,11 @@ namespace DataCollecting
                     // add a new Episode instance to the list of scraped data
                     episodes.Add(new Episode()
                     {
-                        Id = counter++,
-                        Name = HtmlEntity.DeEntitize(node.SelectSingleNode("a[1]/h2").InnerText.ToString()),
-                        Price = HtmlEntity.DeEntitize(node.SelectSingleNode("a[1]/span/span/span").ToString()),
-                        Sku = HtmlEntity.DeEntitize(node.SelectSingleNode("a[2]").GetAttributeValue("data-product_sku", "").ToString()),
-                        Image_url = HtmlEntity.DeEntitize(node.SelectSingleNode("img").GetAttributeValue("src", ""))
+                        Id = ++counter,
+                        Name = HtmlEntity.DeEntitize(node.SelectSingleNode("a[1]/h2").InnerText),
+                        Price = HtmlEntity.DeEntitize(node.SelectSingleNode("a[1]/span/span").InnerText),
+                        Sku = HtmlEntity.DeEntitize(node.SelectSingleNode("a[2]").GetAttributeValue("data-product_sku", "")),
+                        Image_url = HtmlEntity.DeEntitize(node.SelectSingleNode("a[1]/img").GetAttributeValue("src", ""))
                     });
                 }
             }
